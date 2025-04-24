@@ -14,31 +14,19 @@ class _QuizPageState extends State<QuizPage> {
   List<Icon> iconsList = [];
 
   final List<Question> questionsList = [
-    Question('Some cats are actually allergic to humans', true),
-    Question('You can lead a cow down stairs but not up stairs.', false),
-    Question('Approximately one quarter of human bones are in the feet.', true),
-    Question('A slug\'s blood is green.', true),
-    Question('Buzz Aldrin\'s mother\'s maiden name was \"Moon\".', true),
-    Question('It is illegal to pee in the Ocean in Portugal.', true),
-    Question(
-        'No piece of square dry paper can be folded in half more than 7 times.',
-        false),
-    Question(
-        'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
-        true),
-    Question(
-        'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
-        false),
-    Question(
-        'The total surface area of two human lungs is approximately 70 square metres.',
-        true),
-    Question('Google was originally called \"Backrub\".', true),
-    Question(
-        'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
-        true),
-    Question(
-        'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
-        true),
+    Question('Một số con mèo thực sự dị ứng với con người', true),
+    Question('Bạn có thể dẫn một con bò xuống cầu thang nhưng không thể lên cầu thang.', false),
+    Question('Khoảng một phần tư xương của con người nằm ở bàn chân.', true),
+    Question('Máu của con ốc sên có màu xanh.', true),
+    Question('Tên họ của mẹ Buzz Aldrin là "Moon".', true),
+    Question('Ở Bồ Đào Nha, việc đi tiểu trong biển là bất hợp pháp.', true),
+    Question('Không thể gấp một miếng giấy khô hình vuông hơn 7 lần.', false),
+    Question('Ở London, nếu bạn chết trong Tòa nhà Quốc hội, bạn sẽ được quyền tổ chức lễ tang quốc gia, vì tòa nhà này được coi là một nơi thiêng liêng.', true),
+    Question('Âm thanh lớn nhất được tạo ra bởi một loài động vật là 188 decibel. Loài động vật này là voi châu Phi.', false),
+    Question('Tổng diện tích bề mặt của hai phổi người là khoảng 70 mét vuông.', true),
+    Question('Google ban đầu được gọi là "Backrub".', true),
+    Question('Sô-cô-la ảnh hưởng đến tim và hệ thần kinh của chó; vài ounce đủ để giết chết một con chó nhỏ.', true),
+    Question('Ở West Virginia, nếu bạn vô tình đụng phải một con vật với xe của bạn, bạn có thể mang nó về nhà để ăn.', true),
   ];
 
   @override
@@ -72,17 +60,17 @@ class _QuizPageState extends State<QuizPage> {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
-                  'True',
+                  'Đúng',
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                shadowColor: Colors.black, // Shadow color
-                elevation: 5, // Elevation of the button
+                shadowColor: Colors.black,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20), // Rounded corners
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Padding
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 backgroundColor: Colors.green
               ),
               onPressed: () {
@@ -90,39 +78,30 @@ class _QuizPageState extends State<QuizPage> {
               },
             ),
 
-            ///
-            /// To give some space between buttons
-            ///
             SizedBox(height: 8),
 
-            ///
-            /// False Button
-            ///
             ElevatedButton(
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
-                  'False',
+                  'Sai',
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                shadowColor: Colors.black, // Shadow color
-                elevation: 5, // Elevation of the button
+                shadowColor: Colors.black,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20), // Rounded corners
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Padding
-                  backgroundColor: Colors.red
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                backgroundColor: Colors.red
               ),
               onPressed: () {
                 _checkAnswer(false);
               },
             ),
 
-            ///
-            /// Row for Tick-Cross Icons to align them horizontally.
-            ///
             Row(children: iconsList)
           ],
         ),
@@ -132,20 +111,15 @@ class _QuizPageState extends State<QuizPage> {
 
   _checkAnswer(selectedAnswer) {
     if (selectedAnswer == questionsList[count].correctAnswer) {
-      //Correct answer
-
       setState(() {
         iconsList.add(tickIcon);
 
-        // Check if don't cross list size limit which will result in error
         if (count < questionsList.length - 1) count++;
       });
     } else {
-      //Incorrect answer
       setState(() {
         iconsList.add(crossIcon);
 
-        // Check if don't cross list size limit which will result in error
         if (count < questionsList.length - 1) count++;
       });
     }
